@@ -5,6 +5,20 @@ const auth = require('../config/auth');
 
 const router = express.Router();
 
+const validateEmail = (email) => {
+  if (typeof email !== 'string') return false; // Ensure email is a string
+  const emailRegex = (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+  return emailRegex.test(email);
+};
+
+const validateDateOfBirth = (dateOfBirth) => {
+  const dob = new Date(dateOfBirth);
+  const ageLimit = 18;
+  const ageDate = new Date(Date.now() - dob.getTime());
+  const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+  return age >= ageLimit;
+};
+
 // Sign up
 router.get('/sign-up', async (req, res) => {
   res.render('auth/sign-up.ejs');
@@ -13,8 +27,22 @@ router.get('/sign-up', async (req, res) => {
 router.post('/sign-up', async (req, res) => {
   // grab the values from the req body
   const username = req.body.username;
+  const email = req.body.email;
+  const dateOfBirth = req.body.dateOfBirth;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
+
+  // Email validation
+  if (!validateEmail(email)) {
+    return res.send('Invalid email format');
+  }
+
+  // Date of birth validation
+  if (!validateDateOfBirth(dateOfBirth)) {
+    return res.send('You must be at least 18 years old to sign up');
+  }
+
+
   // Check if the user already exists
   const existingUser = await User.findOne({ username });
 
@@ -22,6 +50,7 @@ router.post('/sign-up', async (req, res) => {
   if (existingUser) {
     return res.send('Username is taken');
   }
+  
   // verify that the password matches
   if (password !== confirmPassword) {
     return res.send("Passwords don't match!");
@@ -30,7 +59,7 @@ router.post('/sign-up', async (req, res) => {
   // create the user in the database
   // -b make the password secure
   const hashPassword = auth.encryptPassword(password);
-  const payload = { username, password: hashPassword };
+  const payload = { username, email, dateOfBirth, password: hashPassword };
 
   const newUser = await User.create(payload);
   // sign person in and redirect to home page

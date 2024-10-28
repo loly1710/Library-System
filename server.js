@@ -1,22 +1,26 @@
 const express = require('express');
+const app = express();
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const addUserToViews = require('./middleware/addUserToViews');
+
 require('dotenv').config();
 require('./config/database');
 
-// Controllers
-const authController = require('./controllers/auth');
-const isSignedIn = require('./middleware/isSignedIn');
+// Controllers + Middleware Imports
+const isSignedIn = require('./middleware/isSignedIn.js');
+const addUserToViews = require('./middleware/addUserToViews');
+const authController = require('./controllers/auth.js');
+const booksController = require('./controllers/books.js')
 
-const app = express();
+
+
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : '3000';
+//const path = require('path');
 
 // MIDDLEWARE
-
 // Middleware to parse URL-encoded data from forms
 app.use(express.urlencoded({ extended: false }));
 // Middleware for using HTTP verbs such as PUT or DELETE
@@ -38,7 +42,9 @@ app.use(addUserToViews);
 
 // Public Routes
 app.get('/', async (req, res) => {
-  res.render('index.ejs');
+  res.render('index.ejs', {
+    user: req.session.user,
+  })
 });
 
 app.use('/auth', authController);
@@ -54,6 +60,9 @@ app.get('/protected', async (req, res) => {
     // res.send('Sorry, no guests allowed.');
   }
 });
+
+
+app.use('/books', isSignedIn, booksController);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
