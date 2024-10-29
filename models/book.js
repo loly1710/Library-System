@@ -44,6 +44,12 @@ const bookSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
+        enum: ['Education', 'Literature & Classics', "Children's Books", 'Health & Wellness'],
+    },
+
+    specificGenre: {
+        type: String,
+        required: true,
     },
 
     userType: {
