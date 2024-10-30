@@ -1,63 +1,67 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const bookSchema = new mongoose.Schema({
-    author: {
-        type: String,
-        required: true,
-    },
-
-    title: {
-        type: String,
-        required: true,
-    },
-
-    isbn: {
-        type: String,
-        required: true,
-    },
-
-    publicationYear: {
-        type: Date,
-        required: true,
-    },
-
-    description: {
-        type: String,
-        required: true,
-    },
-
-    coverImg: {
-        type: String,
-        required: true,
-    },
-
-    pages: {
-        type: Number,
-        required: true,
-    },
-
-    availableCopies: {
-        type: Number,
-        required: true,
-    },
-
-    category: {
-        type: String,
-        required: true,
-        enum: ['Education', 'Literature & Classics', "Children's Books", 'Health & Wellness'],
-    },
-
-    specificGenre: {
-        type: String,
-        required: true,
-    },
-
-    userType: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-    }
-})
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  author: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  category: {
+    type: String,
+    enum: [
+        "Children's Books",
+        "Science & Technology",
+        "History",
+        "Health & Wellness",
+        "Business & Economics",
+        "Art & Photography",
+        "Poetry",
+        "Cookbooks",
+        "Education",
+        "Mystery & Thrillers",
+        "Romance",
+        "Others"
+    ],
+    default: "Others",
+    required: true
+  },
+  genre: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  publishedYear: {
+    type: Number,
+    required: true,
+  },
+  availableCopies: {
+    type: Number,
+    required: true,
+    min: 0,
+  },
+  ISBN: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  description: {
+    type: String,
+    trim: true,
+  },
+  coverImage: {
+    type: String,
+    required: true,
+  },
+  addedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Employee'
+  }
+});
 
 const Book = mongoose.model('Book', bookSchema);
-
-module.exports = Book
+module.exports = Book;

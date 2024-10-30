@@ -3,21 +3,147 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Page</title>
+    <title>Layla Library</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: rgb(247, 242, 235);
+        font-family: "Arial", sans-serif;
+      }
+
+      .carousel-item img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+      }
+
+      .welcome-text {
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        margin-top: 20px;
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
+      .btn-container {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .btn {
+        margin: 0 15px;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        border-radius: 25px;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      .btn-primary {
+        background-color: #007bff;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+
+      .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+      }
+
+      .btn-secondary:hover {
+        background-color: #5a6268;
+        transform: scale(1.05);
+      }
+
+      .option-text {
+        margin: 10px 0;
+        font-size: 1.05rem;
+        color: #495057;
+      }
+    </style>
   </head>
   <body>
-    <% if (user) { %>
-      <h1>Welcome to the app, <%= user.username %>!</h1>
-      <a href="/auth/sign-out">Sign out</a>
-      <a href="/books/new">Add Books</a>
-      <a href="/books/edit">Edit Books</a>
-      <a href="/books/show">Show All Books</a>
-      <% } else { %>
-      <h1>Welcome to the app, guest.</h1>
-      <p>
-        <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">sign in</a>.
-      </p>
-      <% } %>
+    <%- include('./partials/navbar-guest.ejs') %>
+    <div id="bookCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="../assets/wallpaper-1.jpg"
+            class="d-block"
+            alt="Book Image 1"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../assets/wallpaper-2.jpg"
+            class="d-block"
+            alt="Book Image 2"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../assets/wallpaper-3.jpg"
+            class="d-block"
+            alt="Book Image 3"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#bookCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#bookCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
 
+    <div class="container welcome-text">
+      <h1>Welcome to Layla Library</h1>
+      <p>
+        Here, you can explore an extensive collection of books across various
+        genres, from timeless classics to contemporary bestsellers. Whether
+        you’re searching for your next great read or seeking detailed
+        information about a specific title, our user-friendly platform makes it
+        easy to find exactly what you need. Dive into rich descriptions, read
+        reviews, and discover recommendations tailored just for you. Join our
+        community of book lovers today and embark on your next literary
+        adventure!
+      </p>
+
+      <div class="btn-container">
+        <div class="option-text">
+          ✨ Create an account to unlock personalized features and save your
+          favorite books.
+        </div>
+        <a href="/auth/sign-up" class="btn btn-primary">Sign Up</a>
+
+        <div class="option-text">
+          🔑 Already have an account? Log in to access your personalized
+          recommendations.
+        </div>
+        <a href="/auth/sign-in" class="btn btn-secondary">Sign In</a>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
