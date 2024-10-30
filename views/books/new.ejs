@@ -8,21 +8,21 @@
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Add a new Book!</h1>
-<form action="/books" method="POST" enctype="multipart/form-data">
+<form action="/books/books" method="POST" enctype="multipart/form-data">
     <label for="Author">Author:</label>
-    <input type="text" name="Author" id="Author" />
+    <input type="text" name="author" id="Author" />
 
     <label for="Title">Title:</label>
-    <input type="text" name="Title" id="Title" />
+    <input type="text" name="title" id="Title" />
 
     <label for="ISBN">ISBN:</label>
-    <input type="text" name="ISBN" id="ISBN"  />
+    <input type="text" name="isbn" id="ISBN"  />
 
     <label for="PuplicationYear">Puplication Year:</label>
-    <input type="Date" name="PuplicationYear" id="PuplicationYear"  />
+    <input type="Date" name="publicationYear" id="PuplicationYear"  />
 
     <label for="Description">Description:</label>
-    <input type="text" name="Description" id="Description" />
+    <input type="text" name="description" id="Description" />
 
     <label for="CoverImg">CoverImg:</label>
     <input type="file" accept="image/*" name="CoverImg" id="CoverImg"  />
@@ -31,7 +31,7 @@
     <input type="number" name="pages" id="pages"  />
 
     <label for="AvailableCopies">Available Copies:</label>
-    <input type="number" name="AvailableCopies" id="AvailableCopies"  />
+    <input type="number" name="availableCopies" id="AvailableCopies"  />
 
     <label for="category">Select a Category:</label>
     <select name="category" id="category" required>

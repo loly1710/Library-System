@@ -5,12 +5,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    lowercase: true,
   },
   
   email: {
     type: String,
     required: true,
     unique: true,
+    lowercase: true,
   },
 
   password: {
@@ -20,6 +22,11 @@ const userSchema = new mongoose.Schema({
 
   dateOfBirth: {
     type: Date,
+    required: true,
+  },
+
+  gender:{
+    type: String,
     required: true,
   },
 

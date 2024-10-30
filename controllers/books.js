@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const Books = require('../models/book.js');
+const Book = require('../models/book.js');
 
 // render a list of all books (Read all)
 router.get('/', async(req, res) => {
     try{
-        const populatedBooks = await Books.find();
+        const populatedBooks = await Book.find();
         console.log('books:', populatedBooks);
         res.render('books.index.ejs', {
             books: populatedBooks
@@ -33,12 +33,14 @@ router.get('/new', (req, res) => {
 // Multer setup for file upload
 const upload = multer({ dest: 'uploads/' });
 
-router.post('/books', upload.single('coverImg'), async (req, res) => {
+router.post('/books', upload.single('CoverImg'), async (req, res) => {
     try {
         // Validate all required fields are present in req.body
-        const { title, author, isbn, description, publicationYear, availableCopies } = req.body;
-        
+        const { title, author, isbn, description, publicationYear, availableCopies, specificGenre, pages, category } = req.body;
+        console.log("params: ", title, author, isbn, description, publicationYear, availableCopies);
+        console.log("REQ: ", req.body);
         if (!title || !author || !isbn || !description || !publicationYear || !availableCopies || !req.file) {
+            
             return res.status(400).send('All fields are required');
         }
 
@@ -48,9 +50,12 @@ router.post('/books', upload.single('coverImg'), async (req, res) => {
             author,
             isbn,
             description,
-            publicationYear: Number(publicationYear),
+            publicationYear: publicationYear,
             availableCopies: Number(availableCopies),
             specificGenre,
+            category,
+            pages,
+            userType: req.session.user._id,
             coverImg: req.file.path // assuming you save the file path
         });
 
@@ -97,7 +102,7 @@ router.delete('/:bookId', async(req,res) => {
 //controllers/books.js
 router.get('/:bookId/edit', async(req, res) => {
     try{
-        const currentBook = await Books.findById(req.params.bookId);
+        const currentBook = await Book.findById(req.params.bookId);
         res.render('books/edit.ejs', {
             book: currentBook,
         });

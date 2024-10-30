@@ -31,6 +31,7 @@ router.post('/sign-up', async (req, res) => {
   const dateOfBirth = req.body.dateOfBirth;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
+  const gender = req.body.gender;
 
   // Email validation
   if (!validateEmail(email)) {
@@ -59,13 +60,14 @@ router.post('/sign-up', async (req, res) => {
   // create the user in the database
   // -b make the password secure
   const hashPassword = auth.encryptPassword(password);
-  const payload = { username, email, dateOfBirth, password: hashPassword };
+  const payload = { username, email, dateOfBirth, password: hashPassword, gender };
 
   const newUser = await User.create(payload);
   // sign person in and redirect to home page
   req.session.user = {
     username: newUser.username,
     _id: newUser._id,
+    userType: newUser.userType,
   };
 
   req.session.save(() => {
@@ -99,6 +101,7 @@ router.post('/sign-in', async (req, res) => {
   req.session.user = {
     username: user.username,
     _id: user._id,
+    //user: newUser.user
   };
 
   req.session.save(() => {
