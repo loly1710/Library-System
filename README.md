@@ -3,7 +3,7 @@
 
 ## Description
 
-The Library Management System is a user-friendly platform designed to facilitate the management of a library's catalog. With two types of users, **employees** and **normal users**, the system allows for distinct access levels and features. **Employees** have the capability to manage the library catalog—adding, editing, or removing books—while **normal users** can register, log in, and view the library catalog, though they lack search and filtering options for simplicity.
+The Library Management System is a user-friendly platform designed to facilitate the management of a library's catalog. With two types of users, **employees** and **normal users**, the system allows for distinct access levels and features. **Employees** have the capability to manage the library category by adding, editing, or removing books while **normal users** can register, log in, and view the library catalog, though they lack search and filtering options for simplicity.
 
 ### Background
 
