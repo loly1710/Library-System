@@ -20,7 +20,7 @@ To explore the Layla Library:
 - **ChatGPT:** (https://chatgpt.com/)
 - **MDN:** (https://developer.mozilla.org/en-US/)
 - **Bootstrap:** (https://getbootstrap.com/)
-- **For Books Image:** (https://www.bloomsbury.com/)
+- **For Books Image and Data:** (https://www.bloomsbury.com/)
   
 ## Technologies Used
 
