@@ -29,7 +29,6 @@ The following technologies were utilized in building this application:
 - **Frontend:** JavaScript, HTML, CSS, Bootstrap
 - **Backend:** Node.js, Express
 - **Database:** MongoDB
-- **Authentication:** JWT (JSON Web Tokens)
 
 ## Next Steps
 
