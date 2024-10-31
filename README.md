@@ -1,97 +1,41 @@
-# MEN Stack Starter Template with Session Authentication
+# Layla Library - Library Management System
+![Library System Screenshot](assets/welcome.png)
 
-Welcome to the MEN Stack Starter Template! This template provides a foundational setup for building web applications using MongoDB, Express.js, and Node.js, complete with session authentication. This is ideal for students looking to kickstart their development projects.
+## Description
 
-## Table of Contents
-- [Prerequisites](#prerequisites)
-- [Clone the Repository](#clone-the-repository)
-- [Installation](#installation)
-- [Environment Setup](#environment-setup)
-- [Running the Application](#running-the-application)
-- [Removing Git and Creating Your Own Repo](#removing-git-and-creating-your-own-repo)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
+The Library Management System is a user-friendly platform designed to facilitate the management of a library's catalog. With two types of users, **employees** and **normal users**, the system allows for distinct access levels and features. **Employees** have the capability to manage the library catalog—adding, editing, or removing books—while **normal users** can register, log in, and view the library catalog, though they lack search and filtering options for simplicity.
 
-## Prerequisites
+### Background
 
-Before you begin, ensure you have the following installed on your machine:
-- [Node.js](https://nodejs.org/) (LTS or later)
-- [MongoDB](https://www.mongodb.com/) (make sure it's running)
-- [Git](https://git-scm.com/) (for cloning the repository)
+This system was developed to streamline category management in library environments, giving employees an intuitive interface to keep the category updated and allowing normal users easy access to the category for book browsing.
 
-## Clone the Repository
+## Getting Started
 
-To clone this repository, open your terminal and run:
+To explore the Layla Library:
 
-```bash
-git clone https://github.com/SEB-1-Bahrain/instructor-men-auth.git men-stack-starter-template
-```
+- [Deployed App](https://layla-library-6baab3612270.herokuapp.com/)
 
-## Installation
-Navigate into the cloned directory:
-```bash
-cd men-stack-starter-template
-```
+## Attributions
+- **StackOverFlow:** (https://stackoverflow.com/)
+- **ChatGPT:** (https://chatgpt.com/)
+- **MDN:** (https://developer.mozilla.org/en-US/)
+- **Bootstrap:** (https://getbootstrap.com/)
+  
+## Technologies Used
 
-Then, install the necessary dependencies:
+The following technologies were utilized in building this application:
 
-```bash
-npm i
-```
+- **Frontend:** JavaScript, HTML, CSS, Bootstrap
+- **Backend:** Node.js, Express
+- **Database:** MongoDB
+- **Authentication:** JWT (JSON Web Tokens)
 
-## Environment Setup
-```plaintext
-MONGODB_URI=atlas_db_uri
-SESSION_SECRET=your_secret_key
-SALT_ROUNDS=10
-```
-Replace `atlas_db_uri` with your desired database name and `your_secret_key` with a secure key.
+## Next Steps
 
-## Removing Git and Creating Your Own Repo
-To remove the existing Git history and create your own repository:
+Planned enhancements for future releases include:
 
-1. Remove the existing .git folder:
-  ```bash
-  rm -rf .git
-  ```
-2. Initialize a new Git repository:
-  ```bash
-  git init
-  ```
-3. Add all files to the new repository:
-  ```bash
-  git add .
-  ```
-4. Commit the changes
-   ```bash
-   git commit -m "Initial commit"
-   ``` 
-5. Create a new repository on GitHub (or any other platform) and follow the instructions to push your local repository.
-  Make a new repository on [GitHub](https://github.com/) named `<your-project-name>`
-  Now link your local project to your remote GitHub repo:
-  ```bash
-  git remote add origin https://github.com/<github-username>/men-stack-relating-data-lab-cookbook.git
-  git push origin main
-  ```
+- **Search and Filter Options for Users:** Allow normal users to search or filter books by criteria like title, author, or genre.
+- **User Profiles:** Add personalized profiles where users can track borrowed books or favorite reads.
+- **Wishlist for Book Purchases:** Allow users to add books to a "Wishlist" so they can request the library to purchase certain titles. This will give employees insights into popular book requests and help expand the category based on demand.
 
-> 🚨 Do not copy the above command. It will not work. Your GitHub username will replace `<github-username>` (including the `<` and `>`) in the URL above.
 
-## Running the application
-```bash
-npm run dev
-```
-
-## Features
-- User registration and login with session management
-- Basic CRUD operations
-- Modular file structure
-- Example routes and controllers
-- Basic user model setup
-- Middleware for templates and authorization
-- Basic authentication flow
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Happy Coding!

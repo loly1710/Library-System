@@ -52,7 +52,9 @@
             <option value="" disabled>Select Category</option>
             <% bookCategories.forEach(function(category) { %> <%
             if(category.name === book.category){ %>
-            <option value="<%= category.name %>" selected><%= category.name %></option>
+            <option value="<%= category.name %>" selected>
+              <%= category.name %>
+            </option>
             <% } else{ %>
             <option value="<%= category.name %>"><%= category.name %></option>
             <% } %> <% }); %>
