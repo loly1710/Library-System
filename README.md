@@ -1,5 +1,5 @@
 # Layla Library - Library Management System
-![Library System Screenshot](assets/welcome.png)
+![Library System Screenshot](./assets/welcome.PNG)
 
 ## Description
 
