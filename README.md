@@ -17,7 +17,6 @@ To explore the Layla Library:
 
 ## Attributions
 - **StackOverFlow:** (https://stackoverflow.com/)
-- **ChatGPT:** (https://chatgpt.com/)
 - **MDN:** (https://developer.mozilla.org/en-US/)
 - **Bootstrap:** (https://getbootstrap.com/)
 - **For Books Image and Data:** (https://www.bloomsbury.com/)
